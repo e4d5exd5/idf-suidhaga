@@ -1,5 +1,6 @@
 import { useSession } from "next-auth/react"
 import { LoginButton, RegisterButton, LogoutButton } from "@/components/buttons.component";
+import Navbar from "@/components/Navbar.component";
 export default function Home() {
   const { data: session, status } = useSession()
   console.log(status, session);
@@ -21,6 +22,7 @@ export default function Home() {
 
   return (
     <>
+    <Navbar></Navbar>
       Home
       <br />
       <button onClick={() => registerHandler()} >Register as John Doe</button>
