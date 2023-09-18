@@ -12,10 +12,10 @@ export const authOptions = {
     CredentialProvider({
       name: 'credentials',
       credentials: {
-        email: {
-          label: 'Email',
-          type: 'email',
-          placeholder: 'Enter your email'
+        ph: {
+          label: 'Mobile Number',
+          type: 'number',
+          placeholder: 'Enter your Mobile Number'
         },
         password: {
 
@@ -25,8 +25,8 @@ export const authOptions = {
       },
       authorize: async (credentials) => {
         let dbUser = await executeQuery({
-          query: `SELECT * FROM user_auth where user_email=? LIMIT 1`,
-          values: [credentials.email]
+          query: `SELECT * FROM user_auth where user_ph=? LIMIT 1`,
+          values: [credentials.ph]
         })
         if (dbUser.length < 0) return null; // User not fount
 
@@ -34,7 +34,7 @@ export const authOptions = {
 
 
         /* To fetch user data and store it in user object so that you can access in user session object uncomment following code. */
-        // By default user object contains only user_id, user_email, user_hash.
+        // By default user object contains only user_id, user_ph, user_hash.
 
         /* let userData = await executeQuery({
           query: `SELECT * FROM user_account where user_id=? LIMIT 1`,
@@ -43,12 +43,12 @@ export const authOptions = {
         if (userData.length < 0) return null; ;// User Data not found 
        
         let user = {
-          email: dbUser[0].email,
+          ph: dbUser[0].ph,
           ...userData[0],
         } */
 
 
-        return { userId: dbUser[0].user_id, email: dbUser[0].user_email, roleId: dbUser[0].user_role_id  } // replace this with user object
+        return { userId: dbUser[0].user_id, ph: dbUser[0].user_ph, roleId: dbUser[0].user_role_id  } // replace this with user object
 
       },
     })

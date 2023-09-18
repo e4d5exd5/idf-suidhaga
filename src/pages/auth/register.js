@@ -17,7 +17,7 @@ const Register = () => {
   // formik hook
   const formik = useFormik({
     initialValues: {
-      email: '',
+      ph: '',
       password: '',
       cpassword: '',
       designation: '',
@@ -31,10 +31,10 @@ const Register = () => {
     validate: (values) => {
       const errors = {};
 
-      if (!values.email) {
-        errors.email = 'Required';
-      } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.email)) {
-        errors.email = 'Invalid email address';
+      if (!values.ph) {
+        errors.ph = 'Required';
+      } else if (!/^\+?[0-9]\d{10}$/i.test(values.ph)) {
+        errors.ph = 'Invalid Mobile Number';
       }
 
       // validate confirm password
@@ -101,7 +101,7 @@ const Register = () => {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify({
-        email: values.email,
+        ph: values.ph,
         password: values.password,
         designation: values.designation,
         title: values.title,
@@ -143,20 +143,20 @@ const Register = () => {
               if (next) {
                 return (
                   <>
-                    <div className={`flex border rounded-xl relative ${formik.errors.email && formik.touched.email ? 'border-rose-600' : ''}`}>
+                    <div className={`flex border rounded-xl relative ${formik.errors.ph && formik.touched.ph ? 'border-rose-600' : ''}`}>
                       <input
-                        type="email"
-                        name='email'
-                        placeholder='Email'
+                        type="tel"
+                        name='ph'
+                        placeholder='Mobile Number'
                                 className='w-full py-4 px-6 border rounded-xl bg-slate-50 focus:outline-none border-none '
-                        {...formik.getFieldProps('email')}
+                        {...formik.getFieldProps('ph')}
                       />
                             <span className='icon flex items-center px-4 text-lightWhite focus:text-violet'>
                                 <HiAtSymbol size={25} className='' />
                       </span>
 
                     </div>
-                    {formik.errors.email && formik.touched.email ? <span className='text-rose-500'>{formik.errors.email}</span> : <></>}
+                    {formik.errors.ph && formik.touched.ph ? <span className='text-rose-500'>{formik.errors.ph}</span> : <></>}
 
                     <div className={`flex border rounded-xl relative ${formik.errors.password && formik.touched.password ? 'border-rose-600' : ''}`}>
                       <input

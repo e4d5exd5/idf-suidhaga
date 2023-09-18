@@ -13,7 +13,7 @@ export default async function handler(req, res) {
     
       // Optional: Check if session user can access this user data
       var data = await executeQuery({
-        query: "SELECT user_account.* ,user_auth.user_email, user_auth.user_role_id FROM user_account JOIN user_auth ON user_account.user_id = user_auth.user_id WHERE user_auth.user_id = ?",
+        query: "SELECT user.* ,user_auth.user_ph, user_auth.user_role_id FROM user JOIN user_auth ON user.user_id = user_auth.user_id WHERE user_auth.user_id = ?",
         values: [slug]
       })
       if (data.length <= 0) return res.status(404).json({ message: 'User not found' })
@@ -25,7 +25,7 @@ export default async function handler(req, res) {
       const { firstName, lastName } = req.body;
       console.log(req.body);
       var data = await executeQuery({
-        query: "UPDATE user_account SET user_first_name = ?, user_last_name = ? WHERE user_id = ?",
+        query: "UPDATE user SET user_first_name = ?, user_last_name = ? WHERE user_id = ?",
         values: [firstName, lastName, session.user.userId]
       })
       if (data.affectedRows < 0) return res.status(500).json({ message: 'Something went wrong' });

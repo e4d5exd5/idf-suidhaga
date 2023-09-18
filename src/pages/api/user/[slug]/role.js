@@ -13,7 +13,7 @@ export default async function handler(req, res) {
 
       // Optional: Check if session user can access this user data
       var data = await executeQuery({
-        query: "SELECT user_id, user_role_id FROM user_account WHERE user_id = ?",
+        query: "SELECT user_id, user_role_id FROM user WHERE user_id = ?",
         values: [slug]
       })
       if (data.length < 0) return res.status(404).json({ message: 'User not found' })

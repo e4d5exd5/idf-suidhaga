@@ -16,19 +16,19 @@ export default async function handler(req, res) {
 
     case 'POST': // Create new user
       if (session) return res.status(307).redirect(`/api/user/${session.user.userId}`);
-      const { email, password, firstName, lastName } = req.body;
+      const { ph, password, firstName, lastName } = req.body;
       const userId = uuidv4(); 
       const userHash = await hash(password, 10);
       const userRole = 2;
 
       var user_auth_data = await executeQuery({
-        query: "INSERT INTO user_auth(user_id, user_email, user_hash, user_role_id) VALUES (?,?,?,?)",
-        values: [userId, email, userHash, userRole]
+        query: "INSERT INTO user_auth(user_id, user_ph, user_hash, user_role_id) VALUES (?,?,?,?)",
+        values: [userId, ph, userHash, userRole]
       })
       if (user_auth_data.error.code == 'ER_DUP_ENTRY') return res.status(409).json({ message: 'User already exists' })
       
       var user_acc_data = await executeQuery({
-        query: "INSERT INTO user_account(user_id, user_first_name, user_last_name) VALUES (?,?,?);",
+        query: "INSERT INTO user(user_id, user_first_name, user_last_name) VALUES (?,?,?);",
         values: [userId,  firstName, lastName]
       })
       if(user_auth_data.affectedRows <= 0 || user_acc_data.affectedRows <= 0) {
@@ -37,12 +37,12 @@ export default async function handler(req, res) {
           values: [userId]
         })
         var user_acc_data_del = await executeQuery({
-          query: "DELETE FROM user_account WHERE user_id = ?",
+          query: "DELETE FROM user WHERE user_id = ?",
           values: [userId]
         })
         return res.status(500).json({ message: 'Something went wrong' })
       }
-      return res.status(201).json({ message: 'User created successfully', user: { userId, email, firstName, lastName } });
+      return res.status(201).json({ message: 'User created successfully', user: { userId, ph, firstName, lastName } });
     
     case 'PUT': // Reset password for session user
       const { oldPassword, newPassword } = req.body;

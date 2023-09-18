@@ -17,3 +17,8 @@ export default async function executeQuery({ query, values }) {
     return { error };
   }
 }
+
+export function executeQueryFactory() {
+    return executeQuery
+}
+

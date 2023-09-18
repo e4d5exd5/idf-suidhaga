@@ -1,6 +1,7 @@
 import { useSession } from "next-auth/react"
 import { LoginButton, RegisterButton, LogoutButton } from "@/components/buttons.component";
 import Navbar from "@/components/Navbar.component";
+
 export default function Home() {
   const { data: session, status } = useSession()
   console.log(status, session);
@@ -19,20 +20,22 @@ export default function Home() {
     //   })
     // console.log(await result.json());
   }
-
+    
   return (
     <>
     <Navbar></Navbar>
-      Home
+      {/* Home
       <br />
       <button onClick={() => registerHandler()} >Register as John Doe</button>
       <br />
       <LoginButton />
       <br />
-      {/* Create /register page to use this */}
+      Create /register page to use this
       <RegisterButton /> 
       <br />
-      <LogoutButton />
+      <LogoutButton /> */}
+      
+      
     </>
   )
 }
