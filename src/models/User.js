@@ -1,9 +1,7 @@
-import Base from "@/models/Base";
-
+import Base from '@/models/Base'
 
 class User extends Base {
-    constructor(tableName){
-        super(tableName)
-    }
+  constructor(tableName) {
+    super(tableName)
+  }
 }
-
