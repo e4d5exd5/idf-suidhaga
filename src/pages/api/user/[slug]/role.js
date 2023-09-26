@@ -1,39 +1,42 @@
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import executeQuery from "@/lib/db";
+import { User, UserAuth, UserRole } from '@/models/User'
 
 export default async function handler(req, res) {
-  const method = req.method;
-  const slug = req.query.slug;
-  const session = await getServerSession(req, res, authOptions);
-  console.log(session);
+    const method = req.method;
+    const slug = req.query.slug;
+    const session = await getServerSession(req, res, authOptions);
+    console.log(session);
 
-  switch (method) {
-    case 'GET': // Get user data for slug user
+    switch (method) {
+        case 'GET': // Get user data for slug user
 
-      // Optional: Check if session user can access this user data
-      var data = await executeQuery({
-        query: "SELECT user_id, user_role_id FROM user WHERE user_id = ?",
-        values: [slug]
-      })
-      if (data.length < 0) return res.status(404).json({ message: 'User not found' })
-      return res.status(200).json({ message: 'User found', user: data[0] });
+            // Optional: Check if session user can access this user data
+            return User.findOne({ where: { id: slug } }).then((user) => {
+                return user.getUserAuth()
+            }).then((userAuth) => {
+                return userAuth.getUserRole()
+            }).then((userRole) => {
+                return res.status(200).json({ role: userRole.name })
+            }).catch((err) => {
+                res.status(500).json({ message: 'Somthing went wrong' })
+            })
 
-    case 'PUT': // Update user data for slug user
-      
-      // if (slug !== session?.user?.userId) return res.status(401).json({ message: 'Unauthorized' })
-      // Optional : Check if session user can update this user role
-      const { roleId, uId } = req.body;
-      console.log(req.body);
-      var data = await executeQuery({
-        query: "UPDATE user_auth SET user_role_id = ? WHERE user_id =?",
-        values: [roleId, uId]
-      })
-      if (data.affectedRows < 0) return res.status(500).json({ message: 'Something went wrong' });
-      return res.status(201).json({ message: 'User updated successfully' });
+        case 'PATCH': // Update user data for slug user
 
-    default:
-      res.status(405).json({ message: 'Method not allowed' });
-      break;
-  }
+            const { roleId, uId } = req.body;
+            if(session?.user?.userId === uId) return res.status(400).json({message: 'Cannot change your Role. Please contact Admin.'})
+            if(session?.user?.roleId < roleId) return res.status(426).json({message: 'Cannot change to a role higher than yours.'})
+            if (session?.user?.roleId < 1) return res.status(403).json({ message: 'You cannot change any roles.' })
+            
+            return  UserAuth.update({role: roleId}, {where: {id: uId}}).then((user)=>{
+                return res.status(200).json({ message: 'User updated successfully' });
+            }).catch((err)=>{
+                return res.status(500).json({ message: 'Something went wrong' });
+            })
+            
+        default:
+            res.status(405).json({ message: 'Method not allowed' });
+            break;
+    }
 }
