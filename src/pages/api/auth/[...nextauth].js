@@ -1,4 +1,4 @@
-import NextAuth from "next-auth"
+import NextAuth from 'next-auth'
 import executeQuery from '@/lib/db'
 import { compare } from 'bcryptjs';
 import CredentialProvider from "next-auth/providers/credentials"
