@@ -7,7 +7,7 @@ import printStyles from '../styles/Print.module.css'
 const NavLink = ({ href, name }) => {
   return (
     <Link
-      className='text-red-500 p-2 px-4 w-30 rounded-3xl m-2 text-center'
+      className='bg-blue-400 p-2 px-4 w-30 rounded-3xl m-2 text-center'
       href={href}
     >
       {name}
