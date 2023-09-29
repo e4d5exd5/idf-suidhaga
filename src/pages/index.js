@@ -6,6 +6,7 @@ import {
 } from '@/components/buttons.component'
 import Navbar from '@/components/Navbar.component'
 import Homepage from '@/components/Homepage.component'
+import Profile from '@/components/Profile.component'
 
 export default function Home() {
   const { data: session, status } = useSession()

@@ -39,7 +39,7 @@ const Register = () => {
 
       if (!values.ph) {
         errors.ph = 'Required'
-      } else if (!/^\+?[0-9]\d{10}$/i.test(values.ph)) {
+      } else if (!/^\d{10}$/g.test(values.ph)) {
         errors.ph = 'Invalid Mobile Number'
       }
 
@@ -88,7 +88,7 @@ const Register = () => {
       }
 
       // validation for mob
-      if (!/^[0-9]*$/i.test(values.mob)) {
+      if (!/^\d{10}$/g.test(values.mob)) {
         errors.mob = 'Mobile Number should only contains numbers'
       } else if (values.mob.length != 10) {
         errors.mob = 'Mobile Number should be 10 digits'
