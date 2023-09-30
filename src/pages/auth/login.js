@@ -20,7 +20,7 @@ export default function Login() {
 
       if (!values.ph) {
         errors.ph = 'Required'
-      } else if (!/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,4}$/i.test(values.ph)) {
+      } else if (!/^\d{10}$/i.test(values.ph)) {
         errors.ph = 'Invalid ph address'
       }
 
