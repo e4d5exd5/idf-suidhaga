@@ -41,7 +41,7 @@ UserAuth.init({
         allowNull: false
     },
     mobile: {
-        type: DataTypes.INTEGER(10),
+        type: DataTypes.BIGINT(10),
         unique: true,
         allowNull: false
     },
@@ -49,13 +49,13 @@ UserAuth.init({
         type: DataTypes.STRING(255),
         allowNull: false
     },
-    // role: {
-    //     type: DataTypes.INTEGER(255),
-    //     references: {
-    //         model: UserRole,
-    //         key: 'id'
-    //     }
-    // }
+    role: {
+        type: DataTypes.INTEGER(255),
+        references: {
+            model: UserRole,
+            key: 'id'
+        }
+    }
 }, {
     sequelize, paranoid: true, timestamps: true, modelName: 'UserAuth', // Set the model name
     tableName: 'UserAuths', })
@@ -87,7 +87,7 @@ User.init({
         allowNull: true
     },
     aadharNumber: {
-        type: DataTypes.INTEGER(12),
+        type: DataTypes.BIGINT(12),
         unique: true,
         allowNull: false,
     },
@@ -130,13 +130,39 @@ User.init({
 
 sequelize.sync() // { force: true }
 
-UserRole.bulkCreate([
-    { id: 0, name: 'Super User' },
-    { id: 1, name: 'Admin' },
-    { id: 2, name: 'Employer' },
-    { id: 3, name: 'Employee' }
-]).then((err) => { console.log("Default Roles Created"); })
-    .catch((err) => { console.log(err);; console.log("Default Roles Already Created"); })
+UserRole.findOrCreate({
+    where:{
+        id: 0
+    },
+    defaults:{
+        name: 'Super User'
+    }
+})
+UserRole.findOrCreate({
+    where:{
+        id: 1
+    },
+    defaults:{
+        name: 'Admin'
+    }
+})
+UserRole.findOrCreate({
+    where:{
+        id: 2
+    },
+    defaults:{
+        name: 'Employer'
+    }
+})
+UserRole.findOrCreate({
+    where:{
+        id: 3
+    },
+    defaults:{
+        name: 'Employee'
+    }
+})
+
 
 
 // UserAuth.create({

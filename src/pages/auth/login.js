@@ -12,16 +12,16 @@ export default function Login() {
   // formik hook
   const formik = useFormik({
     initialValues: {
-      ph: '',
+      mobile: '',
       password: ''
     },
     validate: values => {
       const errors = {}
 
-      if (!values.ph) {
-        errors.ph = 'Required'
-      } else if (!/^\d{10}$/i.test(values.ph)) {
-        errors.ph = 'Invalid ph address'
+      if (!values.mobile) {
+        errors.mobile = 'Required'
+      } else if (!/^\d{10}$/i.test(values.mobile)) {
+        errors.mobile = 'Invalid mobile address'
       }
 
       // validation for password
@@ -40,12 +40,14 @@ export default function Login() {
   })
 
   async function onSubmit(values) {
+      console.log("Submitted");
     const status = await signIn('credentials', {
       redirect: false,
-      ph: values.ph,
+      mobile: values.mobile,
       password: values.password,
       callbackUrl: '/'
     })
+    console.log(status);
     if (status.ok) router.push(status.url)
   }
 
@@ -65,22 +67,22 @@ export default function Login() {
           <form className='flex flex-col gap-3' onSubmit={formik.handleSubmit}>
             <div
               className={`flex border rounded-xl relative ${
-                formik.errors.ph && formik.touched.ph ? 'border-rose-600' : ''
+                formik.errors.mobile && formik.touched.mobile ? 'border-rose-600' : ''
               }`}
             >
               <input
                 type='tel'
-                name='ph'
+                name='mobile'
                 placeholder='Mobile Number'
                 className='w-full py-4 px-6 border rounded-xl bg-slate-50 focus:outline-none border-none;'
-                {...formik.getFieldProps('ph')}
+                {...formik.getFieldProps('mobile')}
               />
               <span className='icon flex items-center px-4'>
                 <HiAtSymbol size={25} />
               </span>
             </div>
-            {formik.errors.ph && formik.touched.ph ? (
-              <span className='text-rose-500'>{formik.errors.ph}</span>
+            {formik.errors.mobile && formik.touched.mobile ? (
+              <span className='text-rose-500'>{formik.errors.mobile}</span>
             ) : (
               <></>
             )}
