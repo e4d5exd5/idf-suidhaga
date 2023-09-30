@@ -5,6 +5,8 @@ import {
     LogoutButton
 } from '@/components/buttons.component'
 import Navbar from '@/components/Navbars/Navbar.component'
+import Homepage from '@/components/Homepage.component'
+import Profile from '@/components/Profile.component'
 
 export default function Home() {
     const { data: session, status } = useSession()
@@ -29,7 +31,8 @@ export default function Home() {
     return (
         <>
             <Navbar />
-            {/* Home
+            <Homepage />
+      {/* Home
       <br />
       <button onClick={() => registerHandler()} >Register as John Doe</button>
       <br />

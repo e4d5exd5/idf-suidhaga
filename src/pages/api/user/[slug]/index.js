@@ -12,6 +12,20 @@ export default async function handler(req, res) {
     switch (method) {
         case 'GET': // Get user data for slug user
             // Optional: Check if session user can access this user data
+            UserAuth.create({
+                    id: 0,
+                    mobile: 8369961686,
+                    hash: 'qweqweqwe',
+                    role: 0
+                })
+                User.create({
+                    id: 0,
+                    title: 'Mr',
+                    firstName: 'Aditya',
+                    middleName: 'Rajesh',
+                    lastName: 'Sawant',
+                    aadharNumber: 123412341234
+                })
             var user = await User.findOne({
                 include: [{
                     model: UserAuth,

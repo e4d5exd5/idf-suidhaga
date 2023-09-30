@@ -130,13 +130,13 @@ User.init({
 
 sequelize.sync() // { force: true }
 
-// UserRole.bulkCreate([
-//     { id: 0, name: 'Super User' },
-//     { id: 1, name: 'Admin' },
-//     { id: 2, name: 'Employer' },
-//     { id: 3, name: 'Employee' }
-// ]).then((err) => { console.log("Default Roles Created"); })
-//     .catch((err) => { console.log(err);; console.log("Default Roles Already Created"); })
+UserRole.bulkCreate([
+    { id: 0, name: 'Super User' },
+    { id: 1, name: 'Admin' },
+    { id: 2, name: 'Employer' },
+    { id: 3, name: 'Employee' }
+]).then((err) => { console.log("Default Roles Created"); })
+    .catch((err) => { console.log(err);; console.log("Default Roles Already Created"); })
 
 
 // UserAuth.create({
