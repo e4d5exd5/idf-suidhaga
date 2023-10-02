@@ -1,11 +1,11 @@
 import printStyles from '../styles/Print.module.css'
 // import Navbar from '@/components/Navbar.component'
 import Link from 'next/link'
-
+import Profile from './Profile.component'
 const HomeNavLink = ({ href, name }) => {
     return (
-      <Link
-        className='p-2 px-4 w-30 rounded-3xl m-2 text-center'
+      <Link 
+        className='p-2 px-6 w-30  text-center hover:bg-blue-100 focus:bg-gradient-to-t from-white to-blue-200'
         href={href}
       >
         {name}
@@ -15,7 +15,7 @@ const HomeNavLink = ({ href, name }) => {
 
 const HomeNavbar = () => {
     return (
-        <div className='flex flex-row justify-start text-black active:text-gray font-bold items-start font'>
+        <div className='flex flex-row justify-center bg-blue-200 text-black active:text-gray font-bold items-start w-full'>
             <HomeNavLink href={'/'} name={'Jobs'} />
             <HomeNavLink href={'/'} name={'Posts'} />
             <HomeNavLink href={'/'} name={'Profile'} />
@@ -27,8 +27,9 @@ const Homepage = () => {
     return (
         <div className='flex h-screen bg-gray-200'>
             <div className='bg-white m-1 w-1/4 h-full'></div>
-            <div className='bg-white flex flex-row justify-center text-white font-bold items-start font m-1 w-1/2'>
+            <div className='bg-white flex-col justify-start text-white font-bold items-start mx-1 mb-1 w-1/2'>
                 <HomeNavbar />
+                <Profile />
             </div>
             <div className='bg-white m-1 w-1/4'></div>
         </div>

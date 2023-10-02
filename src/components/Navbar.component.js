@@ -7,7 +7,7 @@ import printStyles from '../styles/Print.module.css'
 const NavLink = ({ href, name }) => {
   return (
     <Link
-      className='bg-blue-400 p-2 px-4 w-30 rounded-3xl m-2 text-center'
+      className='bg-blue-400 p-2 w-30 m-l-2 px-6 hover:bg-blue-300 hover:text-black text-center focus:bg-gradient-to-t from-blue-200 to-blue-400 focus:text-black'
       href={href}
     >
       {name}
@@ -41,7 +41,7 @@ const Navbar = () => {
           </p>
         </div>
       </div>
-      <div className='flex flex-row justify-center text-white font-bold items-center font'>
+      <div className='flex flex-row justify-center text-white font-bold items-center bg-blue-400'>
         <NavLink href={'/'} name={'Home'} />
         <NavLink href={'/auth/register'} name={'Register'} />
         <NavLink href={'/auth/login'} name={'Login In'} />
