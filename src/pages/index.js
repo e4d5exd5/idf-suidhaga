@@ -1,37 +1,37 @@
 import { useSession } from 'next-auth/react'
 import {
-  LoginButton,
-  RegisterButton,
-  LogoutButton
+    LoginButton,
+    RegisterButton,
+    LogoutButton
 } from '@/components/buttons.component'
-import Navbar from '@/components/Navbar.component'
+import Navbar from '@/components/Navbars/Navbar.component'
 import Homepage from '@/components/Homepage.component'
 import Profile from '@/components/Profile.component'
 
 export default function Home() {
-  const { data: session, status } = useSession()
-  console.log(status, session)
+    const { data: session, status } = useSession()
+    console.log(status, session)
 
-  const registerHandler = async () => {
-    console.log(
-      'This will not register the John Doe. If you want to register John Doe, you need to uncomment the code in index.js of pages folder'
-    )
+    const registerHandler = async () => {
+        console.log(
+            'This will not register the John Doe. If you want to register John Doe, you need to uncomment the code in index.js of pages folder'
+        )
 
-    // let result = await fetch("http://localhost:3000/api/user"
-    //   , {
-    //     method: 'POST',
-    //     headers: {
-    //       'Content-Type': 'application/json'
-    //     },
-    //     body: JSON.stringify({ firstName: 'John', lastName: 'Doe', email: 'johndoe@gmail.com', password: 'johndoe' }),
-    //   })
-    // console.log(await result.json());
-  }
+        // let result = await fetch("http://localhost:3000/api/user"
+        //   , {
+        //     method: 'POST',
+        //     headers: {
+        //       'Content-Type': 'application/json'
+        //     },
+        //     body: JSON.stringify({ firstName: 'John', lastName: 'Doe', email: 'johndoe@gmail.com', password: 'johndoe' }),
+        //   })
+        // console.log(await result.json());
+    }
 
-  return (
-    <>
-      <Navbar />
-      <Homepage />
+    return (
+        <>
+            <Navbar />
+            <Homepage />
       {/* Home
       <br />
       <button onClick={() => registerHandler()} >Register as John Doe</button>
@@ -42,6 +42,6 @@ export default function Home() {
       <RegisterButton /> 
       <br />
       <LogoutButton /> */}
-    </>
-  )
+        </>
+    )
 }
