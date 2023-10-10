@@ -2,6 +2,7 @@ import printStyles from '../styles/Print.module.css'
 // import Navbar from '@/components/Navbar.component'
 import Link from 'next/link'
 import Profile from './Profile.component'
+import Posts from './Posts.component'
 const HomeNavLink = ({ href, name }) => {
     return (
       <Link 
@@ -29,7 +30,10 @@ const Homepage = () => {
             <div className='bg-white m-1 w-1/4 h-full'></div>
             <div className='bg-white flex-col justify-start text-white font-bold items-start mx-1 mb-1 w-1/2'>
                 <HomeNavbar />
-                <Profile />
+             
+                <Posts />
+                
+   
             </div>
             <div className='bg-white m-1 w-1/4'></div>
         </div>

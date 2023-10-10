@@ -7,6 +7,9 @@ import {
 import Navbar from '@/components/Navbars/Navbar.component'
 import Homepage from '@/components/Homepage.component'
 import Profile from '@/components/Profile.component'
+import { ChakraProvider } from '@chakra-ui/react'
+
+
 
 export default function Home() {
     const { data: session, status } = useSession()
@@ -30,8 +33,10 @@ export default function Home() {
 
     return (
         <>
+        
             <Navbar />
             <Homepage />
+            
       {/* Home
       <br />
       <button onClick={() => registerHandler()} >Register as John Doe</button>

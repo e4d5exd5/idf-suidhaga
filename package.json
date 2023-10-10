@@ -10,11 +10,16 @@
     "prettier": "prettier --write ."
   },
   "dependencies": {
+    "@chakra-ui/icons": "^2.1.1",
+    "@chakra-ui/react": "^2.8.1",
+    "@emotion/react": "^11.11.1",
+    "@emotion/styled": "^11.11.0",
     "autoprefixer": "10.4.14",
     "bcryptjs": "^2.4.3",
     "eslint": "8.42.0",
     "eslint-config-next": "13.4.4",
     "formik": "^2.4.4",
+    "framer-motion": "^10.16.4",
     "mysql2": "^3.6.1",
     "nanoid": "^5.0.1",
     "next": "13.4.4",
