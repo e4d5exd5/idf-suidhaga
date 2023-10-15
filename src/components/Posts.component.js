@@ -8,22 +8,32 @@ const Posts = () => {
     bottom: '20px',
     left: '20px'
   }
+  const postsData = [
+    { id: 1},
+    { id: 2},
+    { id: 3},
+    { id: 4},
+  ];
   return (
-    <div className='h-full grid grid-flow-row align-bottom '>
-      <div className='mx-2 my-2 shadow-gray-400 shadow-xl h-[80%]'>
-        <Card />
-      </div>
-      <div className='h-[20%] absolute mt-80 '>
-        <Button
-          className='self-end rounded-md'
-          leftIcon={<AddIcon />}
-          colorScheme='red'
-          variant='solid'
-        >
-          ADD POST
-        </Button>
-      </div>
+    <div className="h-full overflow-y-auto p-2">
+    {postsData.map((post) => (
+      // <div className='mb-4 shadow-gray-500 shadow-xl' key={post.id}>
+        <Card key={post.id}/>
+    //  </div>
+    ))}
+
+    <div style={buttonStyle}>
+      <Button
+        className="self-end rounded-md"
+        leftIcon={<AddIcon />}
+        colorScheme="red"
+        variant="solid"
+      >
+        ADD POST
+      </Button>
     </div>
-  )
-}
+  </div>
+);
+};
+
 export default Posts

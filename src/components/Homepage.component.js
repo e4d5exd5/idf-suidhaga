@@ -28,7 +28,7 @@ const Homepage = () => {
     return (
         <div className='flex h-screen bg-gray-200'>
             <div className='bg-white m-1 w-1/4 h-full'></div>
-            <div className='bg-white flex-col justify-start text-white font-bold items-start mx-1 mb-1 w-1/2'>
+            <div className= 'bg-white mx-1 w-1/2'>
                 <HomeNavbar />
              
                 <Posts />
