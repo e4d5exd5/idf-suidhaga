@@ -48,7 +48,7 @@ const Navbar = ({ children }) => {
                 <NavLink href={'/'} >Home</NavLink>
                 {session?.user ? <></> : <NavLink href={'/auth/register'} >Register</NavLink>}
                 {session?.user ? <></> : <NavLink href={'/auth/login'} >Login In</NavLink>}
-                {!session?.user ? <></> : <NavLink href={'/auth/signout'} >Sign Out</NavLink>}
+                {!session?.user ? <></> : <button className="nav-link bg-blue-400 hover:bg-blue-600 p-2 px-4 w-30 rounded-3xl m-2 text-center" onClick={() => signOut()}>Sign out</button>}
 
                 
                 
