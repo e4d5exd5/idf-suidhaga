@@ -20,7 +20,6 @@ export const NavLink = ({ href, children }) => {
 
 const Navbar = ({ children }) => {
     let { data: session } = useSession()
-    let role = session?.user?.role
     return (
         <div className={`flex flex-col ${printStyles.no_print}`}>
             <div className='flex flex-row justify-center'>
@@ -46,13 +45,13 @@ const Navbar = ({ children }) => {
             </div>
             <div className='flex flex-row justify-center text-white font-bold items-center font'>
                 <NavLink href={'/'} >Home</NavLink>
+                {!session?.user ? <></> : !session?.user?.isAdmin ? <></> : <NavLink href={'/admin'}>Admin</NavLink>}
+                {children ? children : <></>}
                 {session?.user ? <></> : <NavLink href={'/auth/register'} >Register</NavLink>}
                 {session?.user ? <></> : <NavLink href={'/auth/login'} >Login In</NavLink>}
                 {!session?.user ? <></> : <button className="nav-link bg-blue-400 hover:bg-blue-600 p-2 px-4 w-30 rounded-3xl m-2 text-center" onClick={() => signOut()}>Sign out</button>}
-
                 
                 
-                {children ? children : <></>}
             </div>
         </div>
     )
