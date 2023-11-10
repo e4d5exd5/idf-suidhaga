@@ -50,9 +50,13 @@ export const authOptions = {
                   ph: dbUser[0].ph,
                   ...userData[0],
                 } */
+                let isAdmin = false;
+                if (dbUser.role <= 1) {
+                    isAdmin = true;
+                }
 
 
-                return { userId: dbUser.id, ph: dbUser.mobile, roleId: dbUser.role, roleName: dbUser.UserRole.name } // replace this with user object
+                return { userId: dbUser.id, ph: dbUser.mobile, roleId: dbUser.role, roleName: dbUser.UserRole.name, isAdmin } // replace this with user object
 
             },
         })
