@@ -1,13 +1,5 @@
 import { useSession } from 'next-auth/react'
-import {
-    LoginButton,
-    RegisterButton,
-    LogoutButton
-} from '@/components/buttons.component'
-import Navbar from '@/components/Navbars/Navbar.component'
-import Homepage from '@/components/Homepage.component'
-import Profile from '@/components/Profile.component'
-import { ChakraProvider } from '@chakra-ui/react'
+import Layout from '@/layouts/main.layout'
 
 
 
@@ -31,22 +23,13 @@ export default function Home() {
         // console.log(await result.json());
     }
 
-    return (
-        <>
-        
-            <Navbar />
-            <Homepage />
-            
-      {/* Home
-      <br />
-      <button onClick={() => registerHandler()} >Register as John Doe</button>
-      <br />
-      <LoginButton />
-      <br />
-      Create /register page to use this
-      <RegisterButton /> 
-      <br />
-      <LogoutButton /> */}
-        </>
-    )
+}
+
+export async function getServerSideProps(context) {
+    return {
+       redirect: {
+            destination: '/job',
+            permanent: false,
+        },
+    }
 }

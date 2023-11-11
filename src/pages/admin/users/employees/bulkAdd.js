@@ -1,17 +1,18 @@
 import React from 'react'
 import AdminNav from '@/components/Navbars/AdminNav.component'
-import  ExcelReader  from "@/components/Admin/ExcelReader.component";
+import ExcelReader from "@/components/Admin/ExcelReader.component";
+import Layout from '@/layouts/main.layout';
 const bulkAdd = () => {
 
     return (
-        <>
-            <AdminNav></AdminNav>
-            <div>
-                <h1>Excel Reader</h1>
-                <ExcelReader />
-            </div>
 
-        </>
+        <Layout>
+            <h1 className="text-center text-2xl text-blue-500">Bulk Upload Users</h1>
+
+            <ExcelReader />
+        </Layout>
+
+
     )
 }
 

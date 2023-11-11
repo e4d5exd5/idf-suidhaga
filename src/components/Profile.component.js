@@ -1,5 +1,5 @@
 import { useRouter } from "next/router";
-const Profile = () => {
+const ProfileComp = () => {
     return(
             <div className="flex flex-col justify-center items-center border-solid border-x-2  border-gray-200 h-2/4">
                 <div className="rounded-full w-32 h-32 overflow-hidden  mb-1">
@@ -17,4 +17,4 @@ const Profile = () => {
     )
 
 }
-export default Profile
+export default ProfileComp
