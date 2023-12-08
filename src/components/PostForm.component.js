@@ -75,7 +75,7 @@ const PostForm = ({ initialRef, finalRef, isOpen, onClose }) => {
 
                         <FormControl mt={4}>
                             <FormLabel>DESCRIPTION:</FormLabel>
-                            <Input placeholder='DESCRIPTION' type='number' value={formD.description} onChange={(e) => {setFormData({ ...formD, description: e.target.value })}} />
+                            <Input placeholder='DESCRIPTION'  value={formD.description} onChange={(e) => {setFormData({ ...formD, description: e.target.value })}} />
                         </FormControl>
 
                         <FormControl mt={4}>
