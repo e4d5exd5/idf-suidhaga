@@ -7,7 +7,7 @@ const Card = () => {
       className='text-red-400 bg-gray-900 body-font shadow-gray-500 shadow-xl rounded-xl overflow-hidden mb-4'
     >
       <div className='container px-5 py-24 mx-auto'>
-        <div className='lg:w-4/5 mx-auto flex flex-wrap'>
+        <div className='lg:w-4/5 mx-auto flex flex-col'>
           <img
             alt='ecommerce'
             className='lg:w-1/2 w-1/2 lg:h-auto h-64 p-2 mx-2 my-2 object-cover object-center rounded-xl'
