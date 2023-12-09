@@ -10,9 +10,16 @@ import {Image} from "next/image"
 const Profile = () => {
     const[uid,setUid] = useState("");
     const[ userData , setUserData ] = useState([]);
-
     const { data: session, status } = useSession()
+    
+    const data = {
+        title: 'New Title',
+        firstName: 'New First Name',
+        lastName: 'New Last Name',
+    };
     // console.log( session?.user)
+
+
     useEffect(()=>{
         if (session) {
             setUid(session.user.userId);
@@ -40,7 +47,32 @@ const Profile = () => {
         getData();
     },[uid])
 
-    console.log(userData);
+    // console.log(userData);
+
+    const updateUser = async () => {
+        const url = `/api/user/`; // Replace with your actual API route
+        console.log(url);
+        const data = {
+            title: 'New Title',
+            firstName: 'Achaa',
+            lastName: 'Bacha',
+        };
+    
+        const response = await fetch(url, {
+            method: 'PUT',
+            headers: {
+                Accept: 'application/json',
+                'Content-Type': 'application/json',
+                // Add any other headers you might need, such as authorization headers
+            },
+            body: JSON.stringify(data),
+        });
+        
+        // console.log(response);
+        const result = await response.json();
+    
+        console.log(result); // This will contain the response from your API
+    };
     
 
     return (
@@ -48,8 +80,8 @@ const Profile = () => {
         <Layout>
             <HomeNavbar selected='profile' />
             {/* <ProfileComp userData={userData} /> */}
-            <div className="flex flex-col justify-center items-center text-center border-solid border-x-2 w-[100%]  border-gray-200 h-2/4">
-                <div className="rounded-full w-32 h-32 overflow-hidden  mb-1 mt-4">
+            <div className="flex flex-col justify-center items-center text-center border-solid border-x-2 w-[100%]  border-gray-200 h-2/4 bg-white">
+                <div className="w-[250px] h-[600px] rounded-[100%] overflow-hidden  mb-1 mt-4">
                     <img alt="" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg" className="w-full h-full "></img>
                 </div>
                 <div className="mt-3">
@@ -59,6 +91,18 @@ const Profile = () => {
                     </>
                  ))}
                 </div>
+                <div className='mt-[5%] flex '>
+                    <div className=''>
+                    Aadhar : 
+                    {userData.map((index)=>(
+                        <>
+                        <span key={index.aadharNumber} className=" items-center text-base  text-black">{index.aadharNumber} </span>
+                        </>
+                    ))}
+                    </div>
+                </div>
+                
+                <button onClick={updateUser}>click me</button>
             </div>  
         </Layout>
     )
