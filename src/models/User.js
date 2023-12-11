@@ -58,7 +58,8 @@ UserAuth.init({
     }
 }, {
     sequelize, paranoid: true, timestamps: true, modelName: 'UserAuth', // Set the model name
-    tableName: 'UserAuths', })
+    tableName: 'UserAuths',
+})
 
 User.init({
     id: {
@@ -105,7 +106,8 @@ User.init({
     }
 
 }, {
-    sequelize, paranoid: true, timestamps: true})
+    sequelize, paranoid: true, timestamps: true
+})
 
 // UserAuth.associate = models => {
 //     console.log("Associated 1");
@@ -122,43 +124,43 @@ User.init({
 //     console.log("Associated 3");
 //     User.belongsTo(models.UserAuth, { foreignKey: { name: 'id', type: DataTypes.STRING(255), allowNull: false } })
 // }
-    console.log("Associated");
-    UserAuth.hasOne(User, { foreignKey: { name: 'id', type: DataTypes.STRING(255), allowNull: false } })
-    UserAuth.belongsTo(UserRole, { foreignKey: { name: 'role', type: DataTypes.INTEGER(255), allowNull: false } })
-    User.belongsTo(UserAuth, { foreignKey: { name: 'id', type: DataTypes.STRING(255), allowNull: false } })
-    UserRole.hasMany(UserAuth, { foreignKey: { name: 'role', type: DataTypes.INTEGER(255), allowNull: false } })
+console.log("Associated");
+UserAuth.hasOne(User, { foreignKey: { name: 'id', type: DataTypes.STRING(255), allowNull: false } })
+UserAuth.belongsTo(UserRole, { foreignKey: { name: 'role', type: DataTypes.INTEGER(255), allowNull: false } })
+User.belongsTo(UserAuth, { foreignKey: { name: 'id', type: DataTypes.STRING(255), allowNull: false } })
+UserRole.hasMany(UserAuth, { foreignKey: { name: 'role', type: DataTypes.INTEGER(255), allowNull: false } })
 
-sequelize.sync() // { force: true }
+// sequelize.sync({ force: true }) // { force: true }
 
 UserRole.findOrCreate({
-    where:{
+    where: {
         id: 0
     },
-    defaults:{
+    defaults: {
         name: 'Super User'
     }
 })
 UserRole.findOrCreate({
-    where:{
+    where: {
         id: 1
     },
-    defaults:{
+    defaults: {
         name: 'Admin'
     }
 })
 UserRole.findOrCreate({
-    where:{
+    where: {
         id: 2
     },
-    defaults:{
+    defaults: {
         name: 'Employer'
     }
 })
 UserRole.findOrCreate({
-    where:{
+    where: {
         id: 3
     },
-    defaults:{
+    defaults: {
         name: 'Employee'
     }
 })
@@ -183,4 +185,4 @@ UserRole.findOrCreate({
 // console.log("Equals?? =======================================");
 // console.log(User === sequelize.models.User);
 
-module.exports = {UserRole, UserAuth, User}
+module.exports = { UserRole, UserAuth, User }
