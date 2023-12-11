@@ -1,12 +1,9 @@
 import { DataTypes, Model } from "sequelize";
 import sequelize from '@/lib/db'
 import { ForeignKey } from "sequelize-typescript";
-import {UserAuth} from "@/models/User";
+import { UserAuth } from "@/models/User";
 
 export class Post extends Model {
-
-}
-export class PostApplies extends Model {
 
 }
 
@@ -32,26 +29,8 @@ Post.init({
         type: DataTypes.TEXT,
         allowNull: true
     },
-    cost: {
-        type: DataTypes.FLOAT,
-        allowNull: true
-    },
-    material: {
-        type: DataTypes.BOOLEAN,
-        allowNull: true,
-        defaultValue: false
-    },
-    active: {
-        type: DataTypes.BOOLEAN,
-        allowNull: true,
-        defaultValue: true
-    },
-    noOfApplicants: {
-        type: DataTypes.INTEGER,
-        allowNull: true,
-        defaultValue: 1
-    },
-    images: {
+
+    attachments: {
         type: DataTypes.JSON,
         allowNull: true
     },
@@ -59,30 +38,11 @@ Post.init({
     sequelize, paranoid: true, timestamps: true
 })
 
-PostApplies.init({
-    id: {
-        type: DataTypes.STRING(255),
-        primaryKey: true,
-        unique: true,
-        allowNull: false
-    },
-    postId: {
-        type: DataTypes.STRING(255),
-        references: {
-            model: Post,
-            key: 'id'
-        }
-    },
-    userId: {
-        type: DataTypes.STRING(255),
-        references: {
-            model: UserAuth,
-            key: 'id'
-        }
-    },
+
+UserAuth.hasMany(Post, {
+    foreignKey: 'ownerId',
+    sourceKey: 'id',
+    primaryKey: false
 })
 
-
-
-
-module.exports = { Post, PostApplies }
+module.exports = { Post }
