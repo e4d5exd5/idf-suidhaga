@@ -4,6 +4,21 @@ import executeQuery from "@/lib/db";
 const { UserAuth, User, UserRole } = require('@/models/User')
 // import { models } from "@/lib/db"
 
+export async function getUserData(slug) {
+    var user = await User.findOne({
+        include: [{
+            model: UserAuth,
+            attributes: ['mobile', 'role'],
+            include: {
+                model: UserRole,
+                attributes: ['name']
+            }
+        }],
+        where: { id: slug }
+    })
+    return user;
+}
+
 
 export default async function handler(req, res) {
     const method = req.method;
@@ -26,17 +41,7 @@ export default async function handler(req, res) {
             //         lastName: 'Sawant',
             //         aadharNumber: 123412341234
             //     })
-            var user = await User.findOne({
-                include: [{
-                    model: UserAuth,
-                    attributes: ['mobile', 'role'],
-                    include: {
-                        model: UserRole,
-                        attributes: ['name']
-                    }
-                }],
-                where: { id: slug }
-            })
+            var user = await getUserData(slug);
             if (user != null) return res.status(200).json({ message: 'User found', user: user.toJSON() });
             return res.status(404).json({ message: 'User not found' })
 
