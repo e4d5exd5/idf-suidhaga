@@ -72,13 +72,21 @@ export default async function handler(req, res) {
             case 'PUT':
                 if (!session) return res.status(401).json({ message: 'Unauthorized' });
     
-                const { title: newTitle, firstName: newFirstName, lastName: newLastName } = req.body;
+                const { title: newTitle, firstName: newFirstName, lastName: newLastName , middleName: newMiddleName ,
+                            aadharNumber: newAadharNumber , mobile : newMobile , 
+                            rollNumber : newRollNumber , batchMonth : newBatchMonth , batchNo : newBatchNo} = req.body;
     
                 try {
                     const [updatedRowsCount] = await User.update({
-                        title: newTitle,
                         firstName: newFirstName,
                         lastName: newLastName,
+                        middleName: newMiddleName,
+                        aadharNumber: newAadharNumber,
+                        mobile : newMobile,
+                        rollNumber : newRollNumber,
+                        batchMonth : newBatchMonth,
+                        batchNo : newBatchNo,
+
                     }, {
                         where: { id: session.user.userId },
                     });
