@@ -24,7 +24,7 @@
     "mysql2": "^3.6.1",
     "nanoid": "^5.0.1",
     "next": "13.4.4",
-    "next-auth": "^4.22.1",
+    "next-auth": "^4.24.5",
     "postcss": "8.4.24",
     "prettier": "^3.0.3",
     "react": "18.2.0",

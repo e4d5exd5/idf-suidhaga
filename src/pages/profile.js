@@ -8,6 +8,8 @@ import {Image} from "next/image"
 import { Formik, useFormik } from 'formik'
 import Link from 'next/link'
 import { useRouter } from 'next/router'
+// import executeQueryFactory from '@/lib/db'
+
 
 
 const Profile = () => {
@@ -16,6 +18,14 @@ const Profile = () => {
     const { data: session, status } = useSession()
     const[ editProfile , setEditProfile ] = useState(false);
     const route = useRouter();
+
+    // DB
+    // let exec = executeQueryFactory()
+
+    // exec({ query: 'SELECT * from user_roles', values: [] }).then(data => {
+    //     console.log(data)
+    // })
+    // return res.status(200).json({ message: 'Hey' })
 
     const formik = useFormik({
         initialValues: {

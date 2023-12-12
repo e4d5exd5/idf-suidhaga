@@ -19,7 +19,6 @@ import {
     Image,
 } from '@chakra-ui/react'
 
-
 const PostForm = ({ initialRef, finalRef, isOpen, onClose }) => {
     const [formD, setFormData] = useState({
         ownerId: '',
