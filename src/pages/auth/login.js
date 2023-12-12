@@ -49,6 +49,7 @@ export default function Login() {
     })
     console.log(status);
     if (status.ok) router.push(status.url)
+    else alert('Invalid Credentials')
   }
 
   return (

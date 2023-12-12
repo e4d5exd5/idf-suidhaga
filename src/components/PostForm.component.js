@@ -28,7 +28,7 @@ const PostForm = ({ initialRef, finalRef, isOpen, onClose }) => {
         cost: '',
         material: 1,
         active: true,
-        noOfApplicants: -1,
+        noOfApplicants: 1,
         images: {},
     });
     
@@ -42,7 +42,7 @@ const PostForm = ({ initialRef, finalRef, isOpen, onClose }) => {
             cost: '',
             material: true,
             active: true,
-            noOfApplicants: -1,
+            noOfApplicants: 1,
             images: {},
         })
         setMaxApplicants(true);

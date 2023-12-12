@@ -118,6 +118,7 @@ const Register = () => {
         else router.push('/auth/login')
       })
       .catch(err => {
+        alert('Something went wrong')
         console.log(err)
       })
   }
