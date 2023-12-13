@@ -1,11 +1,12 @@
 import { useSession } from 'next-auth/react'
+import AdminLayout from '@/layouts/admin.layout'
 import {
     LoginButton,
     RegisterButton,
     LogoutButton
 } from '@/components/buttons.component'
 import AdminNav from '@/components/Navbars/AdminNav.component'
-import { useState , useEffect } from 'react'
+import { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import logo from '@/../public/images/idf-logo.png'
@@ -18,92 +19,34 @@ export default function Home() {
 
     const [users, setUsers] = useState([]);
 
-  useEffect(() => {
-    const fetchUsers = async () => {
-      try {
-        const response = await fetch('/api/admin/users/');
-        const data = await response.json();
-        console.log(response);
-        if (response.ok) {
-            setUsers(data.users);
-            console.log(data.users);
-          } else {
-            console.error('Error fetching users:', data.message);
-          }
-      } catch (error) {
-        console.error('Error fetching users:', error.message);
-      }
-    };
+    useEffect(() => {
+        const fetchUsers = async () => {
+            try {
+                const response = await fetch('/api/admin/users/');
+                const data = await response.json();
+                console.log(response);
+                if (response.ok) {
+                    setUsers(data.users);
+                    console.log(data.users);
+                } else {
+                    console.error('Error fetching users:', data.message);
+                }
+            } catch (error) {
+                console.error('Error fetching users:', error.message);
+            }
+        };
 
-    fetchUsers();
-  }, []);
+        fetchUsers();
+    }, []);
 
 
     return (
-        <>
-            <AdminNav>
-            <div className='flex flex-row justify-center'>
-                <Link
-                    className='flex flex-col m-2'
-                    href='https://www.idf.org.in'
-                    passHref
-                >
-                    <Image className='w-16 h-20 ' src={logo} alt='idf-logo.png' />
-                </Link>
-                <div className='flex flex-col '>
-                    <h1 className='flex flex-row m-0 font-bold'>
-                        Indian Development Foundation
-                    </h1>
-                    <p className='flex flex-row m-0 text-sm'>
-                        A National NGO committed to Health, Education, and Development
-                    </p>
-                    <p className='flex flex-row text-sm'>
-                        IDF - Organization in Special Consultative Status with the Economic
-                        and Social Council since 2012.
-                    </p>
-                </div>
-            </div>
-            </AdminNav>
 
-      {/* <div className='p-3'>
-      <h1>User List</h1>
-      <ul>
-        <table  style={{ borderCollapse: 'collapse', width: '100%' }}>
-            <thead>
-                <tr className='bg-[#f2f2f2]'>
-                    <th className='border border-solid border-black p-1 text-left'>Title</th>
-                    <th className='border border-solid border-black p-1 text-left'>First Name</th>
-                    <th className='border border-solid border-black p-1 text-left'>Middle Name</th>
-                    <th className='border border-solid border-black p-1 text-left'>Last Name</th>
-                    <th>Mobile</th>
-                    <th className='border border-solid border-black p-1 text-left'>Aadhar No.</th>
-                    <th className='border border-solid border-black p-1 text-left'>Roll No.</th>
-                    <th className='border border-solid border-black p-1 text-left'>Batch Month</th>
-                    <th className='border border-solid border-black p-1 text-left'> Batch No.</th>
-                    <th>Verification</th>
-                    <th className='border border-solid border-black p-1 text-left'>Created At</th>
-                    <th className='border border-solid border-black p-1 text-left'>Updated At</th>
-                </tr>
-            </thead>
-            <tbody>
-                {users.map((user) => (
-                <tr key={user.id} className=' border border-solid border-black'>
-                <td className='border border-solid border-black p-1 text-left'>{user.title}</td>
-                <td className='border border-solid border-black p-1 text-left'>{user.firstName}</td>
-                <td className='border border-solid border-black p-1 text-left'>{user.middleName}</td>
-                <td className='border border-solid border-black p-1 text-left'>{user.lastName}</td>
-                <td className='border border-solid border-black p-1 text-left'>{user.aadharNumber}</td>
-                <td className='border border-solid border-black p-1 text-left'>{user.rollNumber}</td>
-                <td className='border border-solid border-black p-1 text-left'>{user.batchMonth}</td>
-                <td className='border border-solid border-black p-1 text-left'>{user.batchNo}</td>
-                <td className='border border-solid border-black p-1 text-left'>{user.createdAt}</td>
-                <td className='border border-solid border-black p-1 text-left'>{user.updatedAt}</td>
-                </tr>
-            ))}
-            </tbody>
-        </table>
-      </ul>
-      </div> */}
-        </>
+        <AdminLayout>
+            <h1>Admin Home</h1>
+        </AdminLayout>
+
+
+
     )
 }

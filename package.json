@@ -33,6 +33,7 @@
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "react-icons": "^4.11.0",
+    "react-table": "^7.8.0",
     "reflect-metadata": "^0.1.13",
     "sequelize": "^6.5.0",
     "sequelize-cli": "^6.2.0",
