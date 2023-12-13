@@ -81,7 +81,7 @@ const Profile = () => {
             <HomeNavbar selected='profile' />
             {/* <ProfileComp userData={userData} /> */}
             <div className="flex flex-col justify-center items-center text-center border-solid border-x-2 w-[100%]  border-gray-200 h-2/4 bg-white">
-                <div className="w-[250px] h-[600px] rounded-[100%] overflow-hidden  mb-1 mt-4">
+                <div className="w-[250px] h-[250px] rounded-[100%] overflow-hidden  mb-1 mt-4">
                     <img alt="" src="https://cdn.pixabay.com/photo/2015/04/23/22/00/tree-736885_1280.jpg" className="w-full h-full "></img>
                 </div>
                 <div className="mt-3">

@@ -70,28 +70,28 @@ export default async function handler(req, res) {
             return res.status(201).json({ message: 'User created successfully', user: { userId, mobile, title, firstName, lastName } });
 
             case 'PUT':
-                if (!session) return res.status(401).json({ message: 'Unauthorized' });
+               if (!session) return res.status(401).json({ message: 'Unauthorized' });
     
                 const { title: newTitle, firstName: newFirstName, lastName: newLastName } = req.body;
     
-                try {
-                    const [updatedRowsCount] = await User.update({
-                        title: newTitle,
-                        firstName: newFirstName,
-                        lastName: newLastName,
-                    }, {
-                        where: { id: session.user.userId },
-                    });
+                 try {
+                     const [updatedRowsCount] = await User.update({
+                         title: newTitle,
+                         firstName: newFirstName,
+                         lastName: newLastName,
+                     }, {
+                         where: { id: session.user.userId },
+                     });
     
-                    if (updatedRowsCount === 0) {
-                        return res.status(404).json({ message: 'User not found' });
-                    }
+                     if (updatedRowsCount === 0) {
+                         return res.status(404).json({ message: 'User not found' });
+                     }
     
-                    return res.status(200).json({ message: 'User updated successfully' });
-                } catch (error) {
-                    console.error(error);
-                    return res.status(500).json({ message: 'Something went wrong' });
-                }
+                     return res.status(200).json({ message: 'User updated successfully' });
+                 } catch (error) {
+                     console.error(error);
+                     return res.status(500).json({ message: 'Something went wrong' });
+               }
             
 
         case 'PATCH': // Reset password for session user
