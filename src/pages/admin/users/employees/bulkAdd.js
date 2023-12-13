@@ -6,11 +6,11 @@ const bulkAdd = () => {
 
     return (
 
-        <Layout>
+        <AdminNav>
             <h1 className="text-center text-2xl text-blue-500">Bulk Upload Users</h1>
 
             <ExcelReader />
-        </Layout>
+        </AdminNav>
 
 
     )
