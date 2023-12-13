@@ -65,8 +65,6 @@ const AdminNav = ({ children }) => {
                             </div>
                         </div>
                         <div className='flex flex-row gap-5 mr-[5%] text-base font-semibold'>
-                            <div className='cursor-pointer'><NavigationLink href={'/auth/register'} >Register</NavigationLink></div>
-                            <div className='cursor-pointer'><NavigationLink href={'/auth/login'} >Login</NavigationLink></div>
                             <div className='cursor-pointer' onClick={() => signOut()}>Logout</div>
                         </div>
                     </Header>
