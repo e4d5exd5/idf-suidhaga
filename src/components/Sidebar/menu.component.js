@@ -35,8 +35,8 @@ const MenuList = () => {
             {/* <Menu.Item key="Home" icon={<HomeOutLined/>}>Home</Menu.Item> */}
             <Menu.Item key="home" className='p-1' icon={<HomeOutlined/>} ><NavigationLink href={'/admin/'} >Home</NavigationLink></Menu.Item>
             <Menu.Item key="Authentication" icon={<VpnKeyOutlinedIcon/>} >Authentication</Menu.Item>
-            <Menu.Item key="BulkAdd" icon={<PeopleOutlineOutlinedIcon/>} ><NavigationLink  href={'/admin/users/employees/bulkAdd'} >Bulk Add</NavigationLink></Menu.Item>
-            <Menu.Item key="users" icon={<PeopleOutlineOutlinedIcon/>} ><NavigationLink href={'/admin/users/'} >Users</NavigationLink></Menu.Item>
+            <Menu.Item key="BulkAdd" icon={<PeopleOutlineOutlinedIcon/>} ><NavigationLink  href={'/admin/bulkAdd'} >Bulk Add</NavigationLink></Menu.Item>
+            <Menu.Item key="users" icon={<PeopleOutlineOutlinedIcon/>} ><NavigationLink href={'/admin/users'} >Users</NavigationLink></Menu.Item>
             <Menu.Item key="Roles" icon={<ChecklistOutlinedIcon/>} >Roles</Menu.Item>
             <Menu.Item key="Jobs" icon={<WorkOutlineOutlinedIcon/>} >Jobs</Menu.Item>
             <Menu.Item key="Posts" icon={<PostAddOutlinedIcon/>} >Posts</Menu.Item>
