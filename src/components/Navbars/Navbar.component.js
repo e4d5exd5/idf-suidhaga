@@ -3,6 +3,7 @@ import Image from 'next/image'
 import logo from '@/../public/images/idf-logo.png'
 import { useSession, signOut } from 'next-auth/react'
 import printStyles from '@/styles/Print.module.css'
+import {Layout} from "antd"
 
 export const NavLink = ({ href, children }) => {
     return (
