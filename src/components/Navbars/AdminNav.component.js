@@ -41,30 +41,30 @@ const AdminNav = ({ children }) => {
                     <MenuList />
                 </Sider>
                 <Layout>
-                    <Header className='bg-white p-0 flex items-center justify-between'>
+                    <Header className='bg-white p-5 flex items-center justify-between'>
                         <Button type='text' className='text-black' onClick={() => setCollapsed(!collapsed)} icon={<MenuUnfoldOutlined />} />
-                        <div className='flex flex-row justify-center'>
+                        <div className=' flex flex-row justify-center'>
                             <Link
-                                className='flex flex-col m-2'
+                                className='p-1'
                                 href='https://www.idf.org.in'
                                 passHref
                             >
-                                <Image className='w-16 h-20 ' src={logo} alt='idf-logo.png' />
+                                <Image className='w-10 h-12 ' src={logo} alt='idf-logo.png' />
                             </Link>
-                            <div className='flex flex-col justify-normal '>
-                                <p className='flex flex-row m-0 text-bold  text-m'>
+                            <div className=' justify-normal '>
+                                <p className='font-semibold text-sm'>
                                     Indian Development Foundation
                                 </p>
-                                <p className='flex flex-row m-0 text-sm'>
+                                <p className=' text-xs mt-[1%]'>
                                     A National NGO committed to Health, Education, and Development
                                 </p>
-                                <p className='flex flex-row text-sm'>
+                                <p className='text-xs'>
                                     IDF - Organization in Special Consultative Status with the Economic
                                     and Social Council since 2012.
                                 </p>
                             </div>
                         </div>
-                        <div className='flex flex-row gap-5 mr-[5%] text-base font-semibold'>
+                        <div className='flex flex-row gap-5 mr-[3%] text-base font-semibold'>
                             <div className='cursor-pointer' onClick={() => signOut()}>Logout</div>
                         </div>
                     </Header>
