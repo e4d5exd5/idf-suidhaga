@@ -44,7 +44,7 @@ const MenuList = () => {
             <Menu.Item key="Notification" icon={<NotificationsActiveOutlinedIcon/>} >Notification</Menu.Item>
             <Menu.Item key="Payments" icon={<PointOfSaleOutlinedIcon/>} >Payments</Menu.Item>
             <Menu.Item key="Settings" icon={<AdminPanelSettingsOutlinedIcon/>} >Settings</Menu.Item>
-            <Menu.Item key="Bugs" icon={<BugReportOutlinedIcon/>} >Bugs</Menu.Item>
+            <Menu.Item key="Bugs" icon={<BugReportOutlinedIcon/>}> <NavigationLink  href={'/admin/bugs'} >Bugs </NavigationLink></Menu.Item>
             <Menu.Item key="Profile" icon={<BugReportOutlinedIcon/>} >Profile</Menu.Item>
             
 
