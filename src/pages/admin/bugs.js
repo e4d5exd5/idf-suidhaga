@@ -16,8 +16,8 @@ const BugsAdmin = () =>{
                 const data = await response.json();
                 console.log(response);
                 if (response.ok) {
-                    setBugs(data);
-                    console.log(data);
+                    setBugs(data.bugs);
+                    console.log(data.bugs);
                 } else {
                     console.error('Error fetching users:', data.message);
                 }
@@ -29,10 +29,33 @@ const BugsAdmin = () =>{
         fetchBugs();
     }, []);
 
-
+    console.log(Array.isArray(bugs));
     return(<>
         <AdminLayout>
-
+        <div className='p-3'>
+                <h1 className="font-semibold p-2 flex justify-center text-base">Bugs List</h1>
+                <ul>
+                    <table style={{ borderCollapse: 'collapse', width: '100%' }}>
+                        <thead>
+                            <tr className='bg-[#f2f2f2]'>
+                                <th className='border border-solid border-black p-1 text-left'>Owner Id</th>
+                                <th className='border border-solid border-black p-1 text-left'>Title</th>
+                                <th className='border border-solid border-black p-1 text-left'>Description</th>
+                                
+                            </tr>
+                        </thead>
+                        <tbody>
+                            {bugs && bugs.map((bug) => (
+                                <tr key={bug.id} className=' border border-solid border-black'>
+                                    <td className='border border-solid border-black p-1 text-left'>{bug.ownerId}</td>
+                                    <td className='border border-solid border-black p-1 text-left'>{bug.title}</td>
+                                    <td className='border border-solid border-black p-1 text-left'>{bug.description}</td>
+                                </tr>
+                            ))}
+                        </tbody>
+                    </table>
+                </ul>
+            </div>
         </AdminLayout>
     </>)
 }

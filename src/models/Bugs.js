@@ -30,7 +30,7 @@ Bugs.init({
         allowNull: true
     },
 }, {
-    sequelize, paranoid: true, timestamps: true , modelName: 'Bugs', 
+    sequelize, paranoid: true, timestamps: false , modelName: 'Bugs', 
     tableName: 'bugs'
 })
 
