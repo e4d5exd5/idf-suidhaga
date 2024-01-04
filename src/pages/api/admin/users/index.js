@@ -2,7 +2,7 @@ import { createConnection } from 'mysql2/promise';
 import { getServerSession } from 'next-auth/next';
 import mysql from 'serverless-mysql';
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import { User, UserAuth, UserRole } from "@/models/User";
+import { User, UserAuth, UserRole } from "@/models/associations";
 
 export default async function handler(req, res) {
     if (req.method !== 'GET') {

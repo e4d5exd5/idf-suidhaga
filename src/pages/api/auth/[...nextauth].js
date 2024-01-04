@@ -2,7 +2,7 @@ import NextAuth from 'next-auth'
 import executeQuery from '@/lib/db'
 import { compare } from 'bcryptjs';
 import CredentialProvider from "next-auth/providers/credentials"
-import { UserAuth, UserRole } from "@/models/User";
+import { UserAuth, UserRole } from "@/models/associations";
 export const authOptions = {
     // Configure one or more authentication providers
     session: {

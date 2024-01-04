@@ -1,7 +1,8 @@
-require('@/models/associations');
+
 const { sequelize } = require("@/lib/db");
 import { Job, JobApplications } from "@/models/Job";
 import { UserAuth, User, UserRole } from "@/models/User";
+import { Bugs } from "@/models/Bugs";
 
 UserAuth.hasMany(Job, {
     foreignKey: 'ownerId',
@@ -21,6 +22,8 @@ UserAuth.belongsTo(UserRole, { foreignKey: { name: 'role', type: DataTypes.INTEG
 User.belongsTo(UserAuth, { foreignKey: { name: 'id', type: DataTypes.STRING(255), allowNull: false } })
 UserRole.hasMany(UserAuth, { foreignKey: { name: 'role', type: DataTypes.INTEGER(255), allowNull: false } })
 
-
 console.log("Associated");
 sequelize.sync({ force: true })
+
+export default sequelize
+export { Job, JobApplications, UserAuth, User, UserRole, Bugs };

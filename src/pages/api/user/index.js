@@ -3,7 +3,7 @@ import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { v4 as uuidv4 } from 'uuid';
 import executeQuery from "@/lib/db";
 import { hash, compare } from 'bcryptjs';
-import { UserAuth, User } from "@/models/User";
+import { UserAuth, User } from "@/models/associations";
 
 export default async function handler(req, res) {
     const method = req.method;

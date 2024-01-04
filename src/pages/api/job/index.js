@@ -1,8 +1,7 @@
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
 import { v4 as uuidv4 } from 'uuid';
-import { Job, JobApplications } from "@/models/Job";
-import { UserAuth } from "@/models/User";
+import { Job, JobApplications, UserAuth } from "@/models/associations";
 import { getUserData } from "../user/[slug]";
 
 export default async function handler(req, res) {

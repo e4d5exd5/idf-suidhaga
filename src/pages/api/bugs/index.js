@@ -1,7 +1,6 @@
 import { getServerSession } from "next-auth/next"
 import { authOptions } from "@/pages/api/auth/[...nextauth]";
-import { Bugs } from "@/models/Bugs";
-import { UserAuth, User } from "@/models/User";
+import { UserAuth, User, Bugs } from "@/models/associations";
 import { v4 as uuidv4 } from 'uuid';
 
 
