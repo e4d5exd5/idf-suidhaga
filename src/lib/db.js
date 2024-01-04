@@ -23,7 +23,7 @@ export async function executeQuery({ query, values }) {
 }
 
 function logToFile(msg) {
-    console.log(msg);
+    // console.log(msg);
     let fileName = new Date().toISOString().split('T')[0]
     const logFilePath = `logs/db/${fileName}.log`
     fs.appendFile(logFilePath, `${new Date().toISOString()}: ${msg}\n`, (err) => {

@@ -13,6 +13,7 @@ Job.belongsTo(UserAuth, {
     sourceKey: 'id',
     primaryKey: false
 })
+
 Job.belongsToMany(UserAuth, { through: JobApplications })
 UserAuth.belongsToMany(Job, { through: JobApplications })
 UserAuth.hasOne(User, { foreignKey: { name: 'id', type: DataTypes.STRING(255), allowNull: false } })

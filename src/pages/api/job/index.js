@@ -12,7 +12,7 @@ export default async function handler(req, res) {
 
     switch (method) {
         case "GET":
-            Job.findAll({ where: { active: true } })
+            await Job.findAll({ where: { active: true } })
                 .then(async (jobs) => {
                     // Use map to create an array of Promises for fetching additional data
                     const jobPromises = jobs.map(async (job) => {
@@ -45,7 +45,7 @@ export default async function handler(req, res) {
 
                     // Wait for all promises to resolve using Promise.all
                     const jobsWithDetails = await Promise.all(jobPromises);
-                    console.log(jobsWithDetails);
+                    // console.log(jobsWithDetails);
                     return res.status(200).json({ jobs: jobsWithDetails });
                 })
                 .catch((error) => {
@@ -55,7 +55,7 @@ export default async function handler(req, res) {
 
             break;
         case "POST":
-            userId = req.body.userId;
+            // userId = req.body.userId;
             if (!userId) return res.status(401).json({ message: 'Unauthorized' })
             let { title, description, cost, material, noOfApplicants, attachments } = req.body;
             const active = true;
@@ -64,7 +64,7 @@ export default async function handler(req, res) {
             let job = await Job.create({ id, ownerId, title, description, cost, material, active, noOfApplicants, attachments });
 
             if (!job) return res.status(500).json({ message: 'Something went wrong' })
-            return res.status(200).json({ message: 'Job created successfully', job })
+            return res.status(200).json({ message: 'Job created successfully', job: job.toJSON() })
 
         default:
             res.status(405).json({ message: 'Method not allowed' });

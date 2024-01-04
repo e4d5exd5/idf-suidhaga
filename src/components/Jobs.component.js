@@ -1,10 +1,10 @@
-import Card from '@/components/Cards/Postcard'
+import Card from '@/components/Cards/Jobcard'
 import { Button } from '@chakra-ui/react'
 import { AddIcon } from '@chakra-ui/icons'
-import Addpost from '@/pages/cards/addpost'
-import PostForm from '@/components/PostForm.component'
-import React, { useState } from 'react'
+import JobForm from '@/components/JobForm.component'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
+
 import {
     useDisclosure,
     Modal,
@@ -24,18 +24,26 @@ import {
     Image,
 } from '@chakra-ui/react'
 
-const Posts = () => {
+const Jobs = () => {
+    
     const buttonStyle = {
         position: 'fixed',
         bottom: '0px',
         boxShadow: '0px 0px 5px rgba(255, 255, 255, 1)',
         borderRadius: '8px',
         border: '2px solid #ffffff',
-        width: '968px',
-        backgroundColor:'white',
-        
+        width: '100%',
+        backgroundColor: 'white',
+
     }
-    const postsData = [{ id: 1 }, { id: 2 }, { id: 3 }, { id: 4 }]
+    const [jobsData, setJobsData] = useState([]);
+    
+    useEffect(() => {
+        fetch('/api/job')
+            .then(response => response.json())
+            .then(data => { setJobsData(data.jobs)});
+    }, [jobsData, setJobsData]);
+    
     const { isOpen, onOpen, onClose } = useDisclosure()
 
     const initialRef = React.useRef(null)
@@ -43,9 +51,9 @@ const Posts = () => {
 
     return (
         <div className='h-full overflow-y-auto p-2 pb-10'>
-            {postsData.map(post => (
-                // <div className='mb-4 shadow-gray-500 shadow-xl' key={post.id}>
-                <Card key={post.id} />
+            {jobsData.map(job => (
+                // <div className='mb-4 shadow-gray-500 shadow-xl' key={job.id}>
+                <Card key={job.id} job={job} />
                 //  </div>
             ))}
 
@@ -59,10 +67,10 @@ const Posts = () => {
                     onClick={onOpen}
                     borderRadius={8}
                 >
-                    ADD POST
+                    ADD Job
                 </Button>
 
-                <PostForm initialRef={initialRef}
+                <JobForm initialRef={initialRef}
                     finalRef={finalRef}
                     isOpen={isOpen}
                     onClose={onClose} />
@@ -72,4 +80,4 @@ const Posts = () => {
     )
 }
 
-export default Posts
+export default Jobs
