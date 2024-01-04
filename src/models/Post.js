@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize";
-import sequelize from '@/lib/db'
+import sq from '@/lib/db'
 import { ForeignKey } from "sequelize-typescript";
 import { UserAuth } from "@/models/User";
 
@@ -35,7 +35,7 @@ Post.init({
         allowNull: true
     },
 }, {
-    sequelize, paranoid: true, timestamps: true
+    sequelize: sq, paranoid: true, timestamps: true
 })
 
 

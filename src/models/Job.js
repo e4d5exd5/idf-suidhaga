@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize";
-import sequelize from '@/lib/db'
+import sq from '@/lib/db'
 import { ForeignKey } from "sequelize-typescript";
 import { UserAuth } from "@/models/User";
 
@@ -56,7 +56,7 @@ Job.init({
         allowNull: true
     },
 }, {
-    sequelize, paranoid: true, timestamps: true
+    sequelize: sq, paranoid: true, timestamps: true
 })
 
 JobApplications.init({
@@ -97,8 +97,8 @@ JobApplications.init({
         allowNull: true,
         defaultValue: false
     },
-},{
-    sequelize, paranoid: true, timestamps: true
+}, {
+    sequelize: sq, paranoid: true, timestamps: true
 })
 
 

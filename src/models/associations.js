@@ -1,5 +1,8 @@
 
-const { sequelize } = require("@/lib/db");
+import { DataTypes } from "sequelize";
+// const sq = require("@/lib/db");
+import sq from "@/lib/db";
+console.log(sq);
 import { Job, JobApplications } from "@/models/Job";
 import { UserAuth, User, UserRole } from "@/models/User";
 import { Bugs } from "@/models/Bugs";
@@ -23,7 +26,7 @@ User.belongsTo(UserAuth, { foreignKey: { name: 'id', type: DataTypes.STRING(255)
 UserRole.hasMany(UserAuth, { foreignKey: { name: 'role', type: DataTypes.INTEGER(255), allowNull: false } })
 
 console.log("Associated");
-sequelize.sync({ force: true })
+sq.sync({ force: true })
 
-export default sequelize
+export default sq
 export { Job, JobApplications, UserAuth, User, UserRole, Bugs };

@@ -1,5 +1,5 @@
 import { DataTypes, Model } from "sequelize";
-import sequelize from '@/lib/db'
+import sq from '@/lib/db'
 import { ForeignKey } from "sequelize-typescript";
 
 export class UserRole extends Model {
@@ -29,7 +29,7 @@ UserRole.init({
         allowNull: false
     },
 }, {
-    sequelize, paranoid: true, timestamps: true
+    sequelize: sq, paranoid: true, timestamps: true
 })
 
 
@@ -57,7 +57,7 @@ UserAuth.init({
         }
     }
 }, {
-    sequelize, paranoid: true, timestamps: true, modelName: 'UserAuth', // Set the model name
+    sequelize: sq, paranoid: true, timestamps: true, modelName: 'UserAuth', // Set the model name
     tableName: 'UserAuths',
 })
 
@@ -106,7 +106,7 @@ User.init({
     }
 
 }, {
-    sequelize, paranoid: true, timestamps: true
+    sequelize: sq, paranoid: true, timestamps: true
 })
 
 // UserAuth.associate = models => {
