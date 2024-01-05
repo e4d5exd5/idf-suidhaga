@@ -26,7 +26,7 @@ User.belongsTo(UserAuth, { foreignKey: { name: 'id', type: DataTypes.STRING(255)
 UserRole.hasMany(UserAuth, { foreignKey: { name: 'role', type: DataTypes.INTEGER(255), allowNull: false } })
 
 console.log("Associated");
-sq.sync({ force: true })
+// sq.sync({ force: true })
 
 export default sq
 export { Job, JobApplications, UserAuth, User, UserRole, Bugs };

@@ -5,7 +5,7 @@ import { Button } from 'antd'
 
 const Card = ({ job }) => {
     const { data: session } = useSession()
-    console.log(session.user);
+    console.log(session?.user);
     const isOwner = job.ownerId === session?.user?.userId
     const isApplicant = job.applications?.some(application => application.userId === session?.user?.userId)
     const isApplied = job.applications?.some(application => application.userId === session?.user?.userId && application.status === 'pending')

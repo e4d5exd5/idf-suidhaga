@@ -42,7 +42,7 @@ const Jobs = () => {
         fetch('/api/job')
             .then(response => response.json())
             .then(data => { setJobsData(data.jobs)});
-    }, [jobsData, setJobsData]);
+    }, []);
     
     const { isOpen, onOpen, onClose } = useDisclosure()
 
@@ -55,7 +55,7 @@ const Jobs = () => {
                 // <div className='mb-4 shadow-gray-500 shadow-xl' key={job.id}>
                 <Card key={job.id} job={job} />
                 //  </div>
-            ))}
+            ))} 
 
             <div style={buttonStyle}>
                 <Button
