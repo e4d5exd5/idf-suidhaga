@@ -55,7 +55,11 @@ UserAuth.init({
             model: UserRole,
             key: 'id'
         }
-    }
+    },
+    // Active: {
+    //     type: DataTypes.BOOLEAN(),
+    //     allowNull: true
+    // }
 }, {
     sequelize: sq, paranoid: true, timestamps: true, modelName: 'UserAuth', // Set the model name
     tableName: 'UserAuths',

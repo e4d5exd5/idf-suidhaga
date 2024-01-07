@@ -21,9 +21,10 @@ export default async function handler(req, res) {
             const userId = uuidv4();
             const userHash = await hash(password, 10);
             const userRole = 2;
+            // const Active = true;
             let newUserAuth 
             try {
-            newUserAuth = await UserAuth.create({ id: userId, mobile, hash: userHash, role: userRole })
+            newUserAuth = await UserAuth.create({ id: userId, mobile, hash: userHash, role: userRole  })
             if (!newUserAuth)
                 return res.status(409).json({ message: 'User already exists' })
                 

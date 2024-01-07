@@ -51,7 +51,7 @@ const Jobs = () => {
 
     return (
         <div className='h-full overflow-y-auto p-2 pb-10'>
-            {jobsData.map(job => (
+            {jobsData && jobsData.map(job => (
                 // <div className='mb-4 shadow-gray-500 shadow-xl' key={job.id}>
                 <Card key={job.id} job={job} />
                 //  </div>
